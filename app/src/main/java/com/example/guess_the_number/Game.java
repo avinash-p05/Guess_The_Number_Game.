@@ -70,9 +70,8 @@ public class Game extends AppCompatActivity {
         if (a==Number){
             attempts++;
             at(attempts);
-            String g = (String) t.getText();
             Intent intent = new Intent(this,winner.class);
-            intent.putExtra("at",g);
+            intent.putExtra("at",attempts);
             startActivity(intent);
             return attempts;
         }

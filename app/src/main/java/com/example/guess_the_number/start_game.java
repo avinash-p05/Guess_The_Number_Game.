@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -38,30 +39,36 @@ public class start_game extends AppCompatActivity {
 
     }
     public void start(){
-        String s = n1.getText().toString();
-        String s1 = n2.getText().toString();
-        int a = Integer.parseInt(s);
-        int b = Integer.parseInt(s1);
-        if(s.isEmpty()){
-            Toast.makeText(this, "Please Enter the lower range!!", Toast.LENGTH_SHORT).show();
+        String s1=n1.getText().toString();
+        String s2=n2.getText().toString();
+        if(s1.isEmpty() ){
+            Toast.makeText(this, "Please Enter the Lower range!!", Toast.LENGTH_SHORT).show();
         }
-        else if(a<0){
-            Toast.makeText(this, "Please Enter only Positive range!!", Toast.LENGTH_SHORT).show();
-        }
-        else if(s1.isEmpty()){
-            Toast.makeText(this, "Please Enter the upper range!!", Toast.LENGTH_SHORT).show();
-        }
-        else if(b>1000){
-            Toast.makeText(this, "Please reduce the upper range!!", Toast.LENGTH_SHORT).show();
-        }
-        else if(a>b){
-            Toast.makeText(this, "Lower range cannot be greater than Upper range!!", Toast.LENGTH_SHORT).show();
+        else if(s2.isEmpty()){
+            Toast.makeText(this, "Please Enter the Upper range!!", Toast.LENGTH_SHORT).show();
         }
         else {
-            Intent intent = new Intent(this, Game.class);
-            intent.putExtra("lower", a);
-            intent.putExtra("upper", b);
-            startActivity(intent);
+            int a = Integer.parseInt(s1);
+            int b = Integer.parseInt(s2);
+            if(a<0){
+                Toast.makeText(this, "Lower range should be positive!!", Toast.LENGTH_SHORT).show();
+            }
+            else if(b>999){
+                Toast.makeText(this, "Upper range should be less than 1000 !!", Toast.LENGTH_SHORT).show();
+            }
+            else if(a>b){
+                Toast.makeText(this, "Lower range cannot be greater than Upper range!!", Toast.LENGTH_SHORT).show();
+            }
+            else if(a==b){
+                Toast.makeText(this, "Both ranges cannot be same!!", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Intent intent = new Intent(this, Game.class);
+                intent.putExtra("lower", a);
+                intent.putExtra("upper", b);
+                startActivity(intent);
+
+            }
         }
     }
 

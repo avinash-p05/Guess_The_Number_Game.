@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="248dp"
-        android:editable="true"
+        android:editable="false"
         android:enabled="false"
         android:fontFamily="@font/alatsi"
         android:inputType="number"

@@ -9,10 +9,10 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class winner extends AppCompatActivity {
     Button b,b1;
-    TextView t;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,19 +22,28 @@ public class winner extends AppCompatActivity {
         setContentView(R.layout.activity_winner);
         b=findViewById(R.id.button5);
         b1=findViewById(R.id.button7);
-        t=findViewById(R.id.textView7);
-        String at=getIntent().getStringExtra("at");
-        t.setText(at);
+        int a = getIntent().getIntExtra("at",0);
+        Toast.makeText(this, "You Guessed it in "+a+" Attempts.", Toast.LENGTH_SHORT).show();
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 again();
             }
         });
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                exit();
+            }
+        });
 
     }
     public void again(){
         Intent intent = new Intent(this,start_game.class);
+        startActivity(intent);
+    }
+    public void exit(){
+        Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
     }
 }

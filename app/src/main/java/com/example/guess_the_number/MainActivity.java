@@ -32,6 +32,6 @@ public class MainActivity extends AppCompatActivity {
     public void startgame(){
         Intent intent = new Intent(this,start_game.class);
         startActivity(intent);
-        Toast.makeText(this, "Get Ready to Guess!!", Toast.LENGTH_SHORT).show();
+
     }
 }
